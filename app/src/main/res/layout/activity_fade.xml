@@ -1,0 +1,24 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <com.qiang.test.ui.FadeListView
+        android:id="@+id/fade_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"></com.qiang.test.ui.FadeListView>
+
+    <TextView
+        android:id="@+id/fade_text"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ffffffff"
+        android:gravity="center"
+        android:text="AdTest"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
