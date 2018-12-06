@@ -75,4 +75,5 @@ target_link_libraries( # Specifies the target library.
         android
         GLESv2
         EGL
-        stdc++)
+        stdc++
+        OpenSLES)

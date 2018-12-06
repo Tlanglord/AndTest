@@ -60,7 +60,7 @@ public class NdkActivity extends Activity {
             }
         });
 
-        getException(null);
+//        getException("123456");
     }
 
     public interface OnTimerListener {
@@ -75,4 +75,8 @@ public class NdkActivity extends Activity {
     public native void startDownCountTimer(OnTimerListener onTimerListener);
 
     public native void getException(String str);
+
+    public static void talkException() {
+        int i = 20 / 0;
+    }
 }

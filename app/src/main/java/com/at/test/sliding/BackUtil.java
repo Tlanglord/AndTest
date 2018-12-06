@@ -7,9 +7,7 @@ import android.os.Build;
 
 import java.lang.reflect.Method;
 
-/**
- * Created by Chaojun Wang on 6/9/14.
- */
+
 public class BackUtil {
     private BackUtil() {
     }
@@ -70,8 +68,8 @@ public class BackUtil {
             Method method = Activity.class.getDeclaredMethod("convertToTranslucent",
                     translucentConversionListenerClazz);
             method.setAccessible(true);
-            method.invoke(activity, new Object[] {
-                null
+            method.invoke(activity, new Object[]{
+                    null
             });
         } catch (Throwable t) {
         }

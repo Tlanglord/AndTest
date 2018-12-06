@@ -5,7 +5,6 @@ package com.at.test.opengl.utils;
  */
 public class GLJniUtil {
 
-
     static {
         System.loadLibrary("native-lib");
     }
