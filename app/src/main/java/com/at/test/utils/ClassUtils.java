@@ -9,8 +9,11 @@ import com.at.test.app.wallpaper.WallpaperActivity;
 import com.at.test.graphics.sample.SampleViewActivity;
 import com.at.test.hw.finger.FingerprintActivity;
 import com.at.test.media.audio.AudioActivity;
+import com.at.test.media.codec.MediaCodecActivity;
+import com.at.test.media.extractor.MediaExtractorActivity;
 import com.at.test.media.mreorder.MediaRecorder2Activity;
 import com.at.test.media.mreorder.MediaRecorderActivity;
+import com.at.test.media.sync.MediaSyncActivity;
 import com.at.test.ndk.NdkActivity;
 import com.at.test.opengl.GLActivity;
 import com.at.test.opengl.GLJavaActivity;
@@ -33,7 +36,10 @@ public enum ClassUtils {
     TransitionActivity(TransitionActivity.class),
     BookActivity(BookActivity.class),
     GLJavaActivity(GLJavaActivity.class),
-    OpenSLRecorderActivity(OpenSLRecorderActivity.class);
+    OpenSLRecorderActivity(OpenSLRecorderActivity.class),
+    MediaExtractorActivity(MediaExtractorActivity.class),
+    MediaCodecActivity(MediaCodecActivity.class),
+    MediaSyncActivity(MediaSyncActivity.class);
 
 
 //	//	ScreenSlideActivity(ScreenSlideActivity.class),

@@ -9,7 +9,6 @@ import android.support.v4.util.Pair;
 import android.view.View;
 
 import com.at.test.R;
-import com.at.test.graphics.sample.TextView;
 
 public class TransitionActivity extends Activity {
 
