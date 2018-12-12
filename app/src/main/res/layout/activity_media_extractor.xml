@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/test_extractor_video"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@android:color/holo_red_light"
+        android:gravity="center"
+        android:text="抽取视频"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:id="@+id/test_extractor_audio"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/holo_red_light"
+        android:gravity="center"
+        android:text="抽取音频"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:id="@+id/test_extractor_mux"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/holo_red_light"
+        android:gravity="center"
+        android:text="合成Mp4"
+        android:textColor="#ffffff" />
+
+</LinearLayout>

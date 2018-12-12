@@ -74,6 +74,12 @@
 
         <activity android:name=".opensl.OpenSLRecorderActivity" />
 
+        <activity android:name=".media.extractor.MediaExtractorActivity" />
+
+        <activity android:name=".media.codec.MediaCodecActivity" />
+
+        <activity android:name=".media.sync.MediaSyncActivity" />
+
     </application>
 
 </manifest>

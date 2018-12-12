@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="400dp" />
 
-            <com.at.test.graphics.sample.TextView
+            <com.at.test.graphics.sample.TextSampleView
                 android:layout_width="match_parent"
                 android:layout_height="40dp" />
 
