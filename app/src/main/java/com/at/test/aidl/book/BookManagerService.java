@@ -2,6 +2,7 @@ package com.at.test.aidl.book;
 
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
+import android.util.Log;
 
 import com.at.test.IBook;
 import com.at.test.OnBookListener;
@@ -11,12 +12,14 @@ import java.util.TimerTask;
 
 public class BookManagerService extends IBook.Stub {
 
+    private static final String TAG = "BookManagerService";
     private Timer timer;
 
     private RemoteCallbackList<OnBookListener> callbackList;
 
     public BookManagerService() {
         super();
+        Log.v(TAG, "BookManagerService");
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -26,9 +29,11 @@ public class BookManagerService extends IBook.Stub {
                         OnBookListener onBookListener = callbackList.getBroadcastItem(0);
                         if (onBookListener != null) {
                             onBookListener.leave();
+
                         }
                         callbackList.finishBroadcast();
                     }
+                    Log.v(TAG, "onBookListener");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -51,6 +56,9 @@ public class BookManagerService extends IBook.Stub {
 
     @Override
     public void unregister(OnBookListener listener) throws RemoteException {
+        if (callbackList != null) {
+            callbackList.unregister(listener);
+        }
     }
 
 

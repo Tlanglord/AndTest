@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -21,7 +22,7 @@ public class MediaRecorderActivity extends Activity {
     private MediaRecorder mediaRecorder;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mrecorder);
         String PATH_NAME = PathUtil.getMediaRecorderSavePath();
@@ -45,7 +46,8 @@ public class MediaRecorderActivity extends Activity {
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
                 try {
-                    mediaRecorder.setPreviewDisplay(holder.getSurface());
+                    Surface surface = holder.getSurface();
+                    mediaRecorder.setPreviewDisplay(surface);
                     mediaRecorder.prepare();
                     mediaRecorder.start();// Recording is now started
                 } catch (IOException e) {

@@ -20,11 +20,17 @@ public class BookActivity extends Activity {
 
     private IBook book;
 
+    private ServiceConnection serviceConnection;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = new Intent(this, BookService.class);
-        bindService(intent, new ServiceConnection() {
+//        startService(intent);
+//        startService(intent);
+//
+        startService(intent);
+        bindService(intent, serviceConnection = new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {
                 book = IBook.Stub.asInterface(service);
@@ -54,4 +60,21 @@ public class BookActivity extends Activity {
             Log.v(TAG, "onBookListener");
         }
     };
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (book != null) {
+            try {
+//                Intent intent = new Intent(this, BookService.class);
+//                stopService(intent);
+                book.unregister(onBookListener);
+                unbindService(serviceConnection);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
 }

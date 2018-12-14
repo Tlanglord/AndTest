@@ -261,6 +261,9 @@ public class MediaSyncActivity extends Activity {
                     @Override
                     public void onAudioBufferConsumed(@NonNull MediaSync sync, @NonNull ByteBuffer audioBuffer, int bufferId) {
 //                        audioBuffer.clear();
+                        if (audioCodec != null) {
+                            audioCodec.releaseOutputBuffer(bufferId, false);
+                        }
                         Log.v(TAG, "audio codec onAudioBufferConsumed");
                     }
                 }, null);

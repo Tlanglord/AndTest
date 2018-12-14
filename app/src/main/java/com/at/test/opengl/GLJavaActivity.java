@@ -127,7 +127,7 @@ public class GLJavaActivity extends Activity {
         byteBuffer.order(ByteOrder.nativeOrder());
         FloatBuffer buffer = byteBuffer.asFloatBuffer();
         buffer.put(vertexs);
-        buffer.position(0);
+        buffer.flip();
         GLES20.glVertexAttribPointer(0, 3, GLES20.GL_FLOAT, false, 0, buffer);
         GLES20.glEnableVertexAttribArray(0);
         GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, 3);
