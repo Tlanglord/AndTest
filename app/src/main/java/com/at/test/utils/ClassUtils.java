@@ -15,6 +15,7 @@ import com.at.test.media.mreorder.MediaRecorder2Activity;
 import com.at.test.media.mreorder.MediaRecorder3Activity;
 import com.at.test.media.mreorder.MediaRecorderActivity;
 import com.at.test.media.mreorder.net.MediaRecorderSocketActivity;
+import com.at.test.media.play.ff.FFmpegActivity;
 import com.at.test.media.sync.MediaSyncActivity;
 import com.at.test.ndk.NdkActivity;
 import com.at.test.net.socket.local.LocalSocketActivity;
@@ -47,7 +48,8 @@ public enum ClassUtils {
     MediaSyncActivity(MediaSyncActivity.class),
     LocalSocketActivity(LocalSocketActivity.class),
     WebSocketActivity(WebSocketActivity.class),
-    MediaRecorderSocketActivity(MediaRecorderSocketActivity.class);
+    MediaRecorderSocketActivity(MediaRecorderSocketActivity.class),
+    FFmpegActivity(FFmpegActivity.class);
 
 
 //	//	ScreenSlideActivity(ScreenSlideActivity.class),

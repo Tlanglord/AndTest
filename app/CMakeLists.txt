@@ -5,6 +5,66 @@
 
 cmake_minimum_required(VERSION 3.4.1)
 
+include_directories(${CMAKE_SOURCE_DIR}/src/main/cpp/ffmpeg/include)
+
+
+add_library( avcodec
+        SHARED
+        IMPORTED)
+set_target_properties( avcodec
+        PROPERTIES IMPORTED_LOCATION
+        ${CMAKE_SOURCE_DIR}/src/main/cpp/ffmpeg/armeabi-v7a/libavcodec.so)
+
+#添加libavdevice.so                    
+add_library( avdevice
+        SHARED
+        IMPORTED)
+set_target_properties( avdevice
+        PROPERTIES IMPORTED_LOCATION
+        ${CMAKE_SOURCE_DIR}/src/main/cpp/ffmpeg/armeabi-v7a/libavdevice.so)
+
+add_library( avfilter
+        SHARED
+        IMPORTED)
+set_target_properties( avfilter
+        PROPERTIES IMPORTED_LOCATION
+        ${CMAKE_SOURCE_DIR}/src/main/cpp/ffmpeg/armeabi-v7a/libavfilter.so)
+
+add_library( avformat
+        SHARED
+        IMPORTED)
+set_target_properties( avformat
+        PROPERTIES IMPORTED_LOCATION
+        ${CMAKE_SOURCE_DIR}/src/main/cpp/ffmpeg/armeabi-v7a/libavformat.so)
+
+add_library( avutil
+        SHARED
+        IMPORTED)
+set_target_properties( avutil
+        PROPERTIES IMPORTED_LOCATION
+        ${CMAKE_SOURCE_DIR}/src/main/cpp/ffmpeg/armeabi-v7a/libavutil.so)
+
+add_library( swresample
+        SHARED
+        IMPORTED)
+set_target_properties( swresample
+        PROPERTIES IMPORTED_LOCATION
+        ${CMAKE_SOURCE_DIR}/src/main/cpp/ffmpeg/armeabi-v7a/libswresample.so)
+
+add_library( swscale
+        SHARED
+        IMPORTED)
+set_target_properties( swscale
+        PROPERTIES IMPORTED_LOCATION
+        ${CMAKE_SOURCE_DIR}/src/main/cpp/ffmpeg/armeabi-v7a/libswscale.so)
+
+#add_library( postproc
+#        SHARED
+#        IMPORTED)
+#set_target_properties( postproc-54
+#        PROPERTIES IMPORTED_LOCATION
+#        ${CMAKE_SOURCE_DIR}/src/main/cpp/ffmpeg/lib/libpostproc.so)
+
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
 # You can define multiple libraries, and CMake builds them for you.
@@ -77,3 +137,26 @@ target_link_libraries( # Specifies the target library.
         EGL
         stdc++
         OpenSLES)
+
+
+add_library( # Sets the name of the library.
+        ff-lib
+
+        # Sets the library as a shared library.
+        SHARED
+
+        # Provides a relative path to your source file(s).
+        src/main/cpp/ff/player.cpp )
+
+target_link_libraries( # Sets the name of the library.
+        ff-lib
+
+        # Sets the library as a shared library.
+        # Provides a relative path to your source file(s).
+        avcodec
+#        avdevice
+        avfilter
+        avformat
+        avutil
+        swresample
+        swscale)

@@ -204,7 +204,6 @@ public class MediaRecorder2Activity extends Activity {
                                 preview = new Surface(surfaceTexture);
                             }
 
-
                             surfaceList.add(preview);
                             builder.addTarget(preview);
 

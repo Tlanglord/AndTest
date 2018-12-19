@@ -150,9 +150,13 @@ public class MediaRecorder3Activity extends Activity {
                             surfaceList.add(handleSurface);
                             builder.addTarget(handleSurface);
 
-                            Surface recorder = mediaRecorder.getSurface();
-                            surfaceList.add(recorder);
-                            builder.addTarget(recorder);
+                            Surface image = captureImage();
+                            surfaceList.add(image);
+                            builder.addTarget(image);
+
+//                            Surface recorder = mediaRecorder.getSurface();
+//                            surfaceList.add(recorder);
+//                            builder.addTarget(recorder);
 
                             cameraDevice.createCaptureSession(surfaceList, new CameraCaptureSession.StateCallback() {
                                 @Override
@@ -210,31 +214,38 @@ public class MediaRecorder3Activity extends Activity {
         }
     }
 
-    private void captureImager() {
+    private Surface captureImage() {
+        Surface image = null;
         if (Build.VERSION.SDK_INT > 18) {
-            ImageReader imageReader = ImageReader.newInstance(1080, 10920, ImageFormat.JPEG, 1024);
+            ImageReader imageReader = ImageReader.newInstance(320, 320, ImageFormat.YUV_420_888, 2);
             imageReader.setOnImageAvailableListener(new ImageReader.OnImageAvailableListener() {
                 @Override
                 public void onImageAvailable(ImageReader reader) {
-                    Image image = reader.acquireLatestImage();
-                    Image.Plane planes[] = image.getPlanes();
-                    ByteBuffer byteBuffer = planes[0].getBuffer();
-                    byte bytes[] = new byte[byteBuffer.limit()];
+//                    Image image = reader.acquireLatestImage();
+//                    Image.Plane planes[] = image.getPlanes();
+//                    ByteBuffer byteBuffer = planes[0].getBuffer();
+//                    byte bytes[] = new byte[byteBuffer.limit()];
 
+                    Log.v(TAG, "onImageAvailable");
                 }
             }, null);
-            Surface image = imageReader.getSurface();
+            image = imageReader.getSurface();
         }
+        return image;
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (mediaRecorder != null) {
-            mediaRecorder.stop();
-            mediaRecorder.release();
-            mediaRecorder = null;
+        try {
+            if (mediaRecorder != null) {
+                mediaRecorder.release();
+                mediaRecorder = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
     }
 
     private static final String VERTEX_SHADER = "" +

@@ -34,6 +34,7 @@ public class GLJavaActivity extends Activity {
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
 
+                // 1. init
                 EGL10 egl10 = (EGL10) EGLContext.getEGL();
                 EGLDisplay display = egl10.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
                 egl10.eglInitialize(display, null);
@@ -43,11 +44,13 @@ public class GLJavaActivity extends Activity {
                         EGL10.EGL_GREEN_SIZE, 8,
                         EGL10.EGL_BLUE_SIZE, 8,
                         EGL10.EGL_ALPHA_SIZE, 8,
-                        EGL10.EGL_RENDERABLE_TYPE, EGL14.EGL_OPENGL_ES2_BIT,
+                        EGL10.EGL_RENDERABLE_TYPE,
+                        EGL14.EGL_OPENGL_ES2_BIT,
                         EGL10.EGL_NONE, 0,      // placeholder for recordable [@-3]
                         EGL10.EGL_NONE
                 };
 
+                //2 chooseConfig
                 EGLConfig[] configs = new EGLConfig[1];
                 int[] numConfigs = new int[1];
                 egl10.eglChooseConfig(display, attribList, configs, configs.length, numConfigs);

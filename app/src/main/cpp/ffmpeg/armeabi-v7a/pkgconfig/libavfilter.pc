@@ -1,0 +1,14 @@
+prefix=/f/qiang/workspace/opensource/ffmpeg-3.4.1/android/armv7-a
+exec_prefix=${prefix}
+libdir=/f/qiang/workspace/opensource/ffmpeg-3.4.1/android/armv7-a/lib
+includedir=/f/qiang/workspace/opensource/ffmpeg-3.4.1/android/armv7-a/include
+
+Name: libavfilter
+Description: FFmpeg audio/video filtering library
+Version: 6.107.100
+Requires: 
+Requires.private: libavutil >= 55.78.100
+Conflicts:
+Libs: -L${libdir}  -lavfilter 
+Libs.private: -lm -lz -pthread -pthread
+Cflags: -I${includedir}

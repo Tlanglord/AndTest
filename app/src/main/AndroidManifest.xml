@@ -89,6 +89,7 @@
 
         <activity android:name=".media.mreorder.net.MediaRecorderSocketActivity" />
 
+        <activity android:name=".media.play.ff.FFmpegActivity" />
 
         <service
             android:name=".aidl.book.BookService"

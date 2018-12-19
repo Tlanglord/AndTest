@@ -24,6 +24,11 @@ import java.io.InputStream;
 
 /**
  * 使用CAMERA 类型录制
+ * camera2
+ * ImageReader.OnImageAvailableListener
+ * socket send
+ * socket server recv
+ * surface
  */
 public class MediaRecorderSocketActivity extends Activity {
 
@@ -116,9 +121,6 @@ public class MediaRecorderSocketActivity extends Activity {
 //                        OutputStream os = localSocket.getOutputStream();
 
                     }
-                    while (loopClient) {
-
-                    }
                     if (localSocket != null) {
                         Log.v(TAG, "local socket client close");
                         localSocket.close();
@@ -185,8 +187,6 @@ public class MediaRecorderSocketActivity extends Activity {
 
     private void startRecorder(Surface surface) {
         try {
-
-
             mediaRecorder.setPreviewDisplay(surface);
             mediaRecorder.prepare();
             mediaRecorder.start();// Recording is now started

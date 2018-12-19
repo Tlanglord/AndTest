@@ -11,10 +11,11 @@ import javax.microedition.khronos.opengles.GL10;
 
 /**
  * Created by dqq on 2018/11/20.
+ * ANativeWindow和eglCreateWindowSurface
  */
 public class MyGLSurfaceView extends GLSurfaceView {
 
-    private static final int GLES_VERSION = 2;
+    private static final int GL_ES_VERSION = 2;
 
     public MyGLSurfaceView(Context context) {
         this(context, null);
@@ -27,7 +28,7 @@ public class MyGLSurfaceView extends GLSurfaceView {
 
 
     private void initRender() {
-        setEGLContextClientVersion(GLES_VERSION);
+        setEGLContextClientVersion(GL_ES_VERSION);
         setRenderer(new MyRender());
         setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
     }

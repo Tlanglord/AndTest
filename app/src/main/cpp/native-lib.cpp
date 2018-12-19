@@ -6,6 +6,8 @@
 #include <thread>
 #include <SLES/OpenSLES.h>
 #include <SLES/OpenSLES_Android.h>
+#include <android/native_window.h>
+#include <android/native_window_jni.h>
 
 
 #define  LOG    "JNILOG" // 这个是自定义的LOG的TAG
@@ -477,3 +479,4 @@ Java_com_at_test_opensl_utils_SLRecorder_shutdown(JNIEnv *env, jclass type) {
 
     fclose(gFile);
 }
+
