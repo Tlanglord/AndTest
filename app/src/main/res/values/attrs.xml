@@ -1,0 +1,7 @@
+<resources>
+
+    <declare-styleable name="vg_scroll">
+        <attr name="scrollFlags" format="string" />
+    </declare-styleable>
+
+</resources>

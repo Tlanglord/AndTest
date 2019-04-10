@@ -101,21 +101,21 @@ public class CustomImageView1 extends AppCompatImageView {
             return;
         }
         Bitmap bitmap = drawableToBitmap(drawable);
-        // ��bitmap��Ϊ��ɫ��������һ��BitmapShader
+        // bitmapΪɫһBitmapShader
         mBitmapShader = new BitmapShader(bitmap, TileMode.CLAMP, TileMode.CLAMP);
         float scale = 1.0f;
         int bSize = 0;
         if (mType == TYPE_CIRCLE) {
-            // �õ�bitmap���ߵ�Сֵ
+            // �õ�bitmap�ߵ�Сֵ
             bSize = Math.min(bitmap.getWidth(), bitmap.getHeight());
             scale = mWidth * 1.0f / bSize;
         } else if (mType == TYPE_ROUND || mType == TYPE_OVAL) {
-            // ���ͼƬ�Ŀ���߸���view�Ŀ�߲�ƥ�䣬�������Ҫ���ŵı��������ź��ͼƬ�Ŀ�ߣ�һ��Ҫ��������view�Ŀ�ߣ�������������ȡ��ֵ��
+            // �ͼƬ�Ŀ�߸�view�Ŀ�߲�ƥ�䣬�Ҫ�ŵıźͼƬ�Ŀ�ߣ�һҪview�Ŀ�ߣ�ȡֵ
             scale = Math.max(getWidth() * 1.0f / bitmap.getWidth(), getHeight() * 1.0f / bitmap.getHeight());
         }
-        // shader�ı任��������������Ҫ���ڷŴ������С
+        // shader�ı任Ҫ�ڷŴС
         mMatrix.setScale(scale, scale);
-        // ���ñ任����
+        // �ñ任
         mBitmapShader.setLocalMatrix(mMatrix);
         BlurMaskFilter bmf = new BlurMaskFilter(bSize, Blur.NORMAL);
         mPaint.setMaskFilter(bmf);

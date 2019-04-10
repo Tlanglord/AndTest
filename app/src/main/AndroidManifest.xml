@@ -42,6 +42,10 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".activity.ScrollActivity" />
+
+        <activity android:name=".activity.CoordinatorLayoutActivity" />
+
         <activity android:name=".opengl.GLActivity" />
 
         <activity android:name=".activity.ObjectAnimationActivity" />

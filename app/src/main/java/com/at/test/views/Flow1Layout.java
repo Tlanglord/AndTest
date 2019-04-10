@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class Flow1Layout extends ViewGroup {
-    private float mVerticalSpacing; //ÿ��item������
-    private float mHorizontalSpacing; //ÿ��item������
+    private float mVerticalSpacing; //ÿitem
+    private float mHorizontalSpacing; //ÿitem
 
     public Flow1Layout(Context context) {
         super(context);
@@ -34,7 +34,7 @@ public class Flow1Layout extends ViewGroup {
         int childTop = paddingTop;
         int lineHeight = 0;
 
-        //ͨ������ÿһ���ӿؼ��ĸ߶ȣ��õ��Լ��ĸ߶�
+        //ͨÿһ�ӿؼĸ߶ȣõԼĸ߶�
         for (int i = 0, childCount = getChildCount(); i < childCount; ++i) {
             View childView = getChildAt(i);
             LayoutParams childLayoutParams = childView.getLayoutParams();
@@ -78,7 +78,7 @@ public class Flow1Layout extends ViewGroup {
 
         int lineHeight = 0;
 
-        //�����ӿؼ��Ŀ�ߣ������ӿؼ�Ӧ�ó��ֵ�λ�á�
+        //�ӿؼĿ�ߣӿؼ�Ӧ�óֵ�λ�á�
         for (int i = 0, childCount = getChildCount(); i < childCount; ++i) {
             View childView = getChildAt(i);
 

@@ -1,0 +1,16 @@
+<resources>
+
+    <style name="text_btn_common">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">13dp</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:background">@drawable/shape_btn_common</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+</resources>

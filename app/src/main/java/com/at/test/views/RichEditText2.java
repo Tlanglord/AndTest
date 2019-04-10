@@ -42,66 +42,66 @@ public class RichEditText2 extends AppCompatEditText implements OnLongClickListe
         Log.i("imgpath", filePath);
         String pathTag = "<img src=\"" + filePath + "\"/>";
         SpannableString spanString = new SpannableString(pathTag);
-        // ��ȡ��Ļ�Ŀ��
+        // ȡĻ�Ŀ
 //        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
 //        int paddingLeft = getPaddingLeft();
 //        int paddingRight = getPaddingRight();
 //        int bmWidth = bitmap.getWidth();//ͼƬ�߶�
-//        int bmHeight = bitmap.getHeight();//ͼƬ���
+//        int bmHeight = bitmap.getHeight();//ͼƬ�
 //        int zoomWidth = getWidth() - (paddingLeft + paddingRight);
 //        int zoomHeight = (int) (((float) zoomWidth / (float) bmWidth) * bmHeight);
 //        Bitmap newBitmap = zoomImage(bitmap, zoomWidth, zoomHeight);
 //        ImageSpan imgSpan = new ImageSpan(mContext, newBitmap);
 //        spanString.setSpan(imgSpan, 0, pathTag.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 //        if (mEditable == null) {
-//            mEditable = this.getText(); // ��ȡedittext����
+//            mEditable = this.getText(); // ȡedittext
 //        }
-//        mEditable.delete(start, end);//ɾ��
-//        mEditable.insert(start, spanString); // ����spanStringҪ��ӵ�λ��
+//        mEditable.delete(start, end);//ɾ
+//        mEditable.insert(start, spanString); // spanStringҪӵ�λ
     }
 
     public void addImage(Bitmap bitmap, String filePath) {
         Log.i("imgpath", filePath);
         String pathTag = "<img src=\"" + filePath + "\"/>";
         SpannableString spanString = new SpannableString(pathTag);
-        // ��ȡ��Ļ�Ŀ��
+        // ȡĻ�Ŀ
         int paddingLeft = getPaddingLeft();
         int paddingRight = getPaddingRight();
         int bmWidth = bitmap.getWidth();//ͼƬ�߶�
-        int bmHeight = bitmap.getHeight();//ͼƬ���
+        int bmHeight = bitmap.getHeight();//ͼƬ�
         int zoomWidth = getWidth() - (paddingLeft + paddingRight);
         int zoomHeight = (int) (((float) zoomWidth / (float) bmWidth) * bmHeight);
         Bitmap newBitmap = zoomImage(bitmap, zoomWidth, zoomHeight);
         ImageSpan imgSpan = new ImageSpan(mContext, newBitmap);
         spanString.setSpan(imgSpan, 0, pathTag.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         if (mEditable == null) {
-            mEditable = this.getText(); // ��ȡedittext����
+            mEditable = this.getText(); // ȡedittext
         }
-        int start = this.getSelectionStart(); // ��������ӵ�λ��
+        int start = this.getSelectionStart(); // ӵ�λ
 
         if (spanString.length() < start) {
             start = spanString.length();
         }
-        mEditable.insert(start, spanString); // ����spanStringҪ��ӵ�λ��
+        mEditable.insert(start, spanString); // spanStringҪӵ�λ
         this.setText(mEditable);
         this.setSelection(start, spanString.length());
     }
 
     private Bitmap zoomImage(Bitmap bgimage, double newWidth, double newHeight) {
-        // ��ȡ���ͼƬ�Ŀ�͸�
+        // ȡ�ͼƬ�Ŀ�͸�
         float width = bgimage.getWidth();
         float height = bgimage.getHeight();
-        //������Ϊ0 ����ԭͼ
+        //Ϊ0 ԭͼ
         if (newWidth == 0) {
             newWidth = width;
             newHeight = height;
         }
-        // ��������ͼƬ�õ�matrix����
+        // ͼƬ�õ�matrix
         Matrix matrix = new Matrix();
-        // ������������
+        //
         float scaleWidth = ((float) newWidth) / width;
         float scaleHeight = ((float) newHeight) / height;
-        // ����ͼƬ����
+        // ͼƬ
         matrix.postScale(scaleWidth, scaleHeight);
         Bitmap bitmap = Bitmap.createBitmap(bgimage, 0, 0, (int) width, (int) height, matrix, true);
         return bitmap;

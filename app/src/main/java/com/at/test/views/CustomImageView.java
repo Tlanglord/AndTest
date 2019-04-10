@@ -74,16 +74,16 @@ public class CustomImageView extends AppCompatImageView {
         //		super.onDraw(canvas);
         Bitmap bmp = (mBufferBitmap == null ? null : mBufferBitmap.get());
         if (bmp == null || bmp.isRecycled()) {
-            //��ȡdrawable
+            //ȡdrawable
             Drawable drawable = getDrawable();
-            //��ȡdrawable�Ŀ��
+            //ȡdrawable�Ŀ
             int dwidth = drawable.getIntrinsicWidth();
             int dheight = drawable.getIntrinsicHeight();
             Log.v("czm", "dwidth=" + dwidth + ",width=" + getWidth());
             if (null != drawable) {
                 bmp = Bitmap.createBitmap(getWidth(), getHeight(), Config.ARGB_8888);
                 float scale = 1.0f;
-                //��������
+                //
                 Canvas drawCanvas = new Canvas(bmp);
 
                 if (mType == TYPE_CIRCLE) {
@@ -92,7 +92,7 @@ public class CustomImageView extends AppCompatImageView {
                     scale = Math.max(getWidth() * 1.0f / dwidth, getHeight() * 1.0f / dheight);
                 }
                 Log.v("czm", "scale=" + scale);
-                //�������ű���������bounds�����൱��������ͼƬ
+                //�ű�bounds�൱ͼƬ
                 drawable.setBounds(0, 0, (int) (scale * dwidth), (int) (scale * dheight));
                 drawable.draw(drawCanvas);
                 if (mMaskBitmap == null || mMaskBitmap.isRecycled()) {
@@ -109,7 +109,7 @@ public class CustomImageView extends AppCompatImageView {
             }
 
         } else {
-            //������滹���ڵ����
+            //滹�ڵ
             mPaint.setXfermode(null);
             canvas.drawBitmap(bmp, 0.0f, 0.0f, mPaint);
             return;

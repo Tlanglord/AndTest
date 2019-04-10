@@ -1,7 +1,9 @@
 package com.at.test.utils;
 
 
+import com.at.test.activity.CoordinatorLayoutActivity;
 import com.at.test.activity.ObjectAnimationActivity;
+import com.at.test.activity.ScrollActivity;
 import com.at.test.aidl.book.BookActivity;
 import com.at.test.app.keyguard.KeyguardActivity;
 import com.at.test.app.usage.UsagesActivity;
@@ -49,7 +51,9 @@ public enum ClassUtils {
     LocalSocketActivity(LocalSocketActivity.class),
     WebSocketActivity(WebSocketActivity.class),
     MediaRecorderSocketActivity(MediaRecorderSocketActivity.class),
-    FFmpegActivity(FFmpegActivity.class);
+    FFmpegActivity(FFmpegActivity.class),
+    ScrollActivity(ScrollActivity.class),
+    CoordinatorLayoutActivity(CoordinatorLayoutActivity.class);
 
 
 //	//	ScreenSlideActivity(ScreenSlideActivity.class),
