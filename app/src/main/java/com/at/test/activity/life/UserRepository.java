@@ -1,5 +1,17 @@
 package com.at.test.activity.life;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Database;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Room;
+import android.arch.persistence.room.RoomDatabase;
+
+import com.at.test.TestApplication;
+
+import java.util.List;
+
 /**
  * Created by dqq on 2019/4/11.
  */
@@ -45,6 +57,12 @@ public class UserRepository {
         });
     }
 
+    public void loadUsers() {
+        AppDatabase db = Room.databaseBuilder(TestApplication.getGlobalApplication(),
+                AppDatabase.class, "and_test").build();
+        List<User> users = db.userDao().getUsers();
+    }
+
     public static abstract class HttpExecuteCallback<T> {
 
         abstract void onResponse(T data);
@@ -58,6 +76,26 @@ public class UserRepository {
         public static void execute(HttpExecuteCallback httpExecuteCallback) {
 
         }
+    }
+
+    @Entity(tableName = "user")
+    public static class UserTable {
+
+        @ColumnInfo(name = "id")
+        String userName;
+        @ColumnInfo(name = "id")
+        String userPass;
+    }
+
+    @Dao
+    public interface UserDao {
+        @Query("select * from user")
+        List<User> getUsers();
+    }
+
+    @Database(entities = {User.class}, version = 1)
+    public abstract class AppDatabase extends RoomDatabase {
+        public abstract UserDao userDao();
     }
 
 

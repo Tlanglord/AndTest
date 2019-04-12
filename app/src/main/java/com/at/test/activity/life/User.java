@@ -12,6 +12,9 @@ public class User {
 
 
     public static class UserLiveData extends LiveData<User> {
+
+        public User user;
+
         @Override
         public void observe(@NonNull LifecycleOwner owner, @NonNull Observer<User> observer) {
             super.observe(owner, observer);
@@ -23,6 +26,16 @@ public class User {
 
         public User getUser() {
             return getValue();
+        }
+
+        @Override
+        protected void onActive() {
+            super.onActive();
+        }
+
+        @Override
+        protected void onInactive() {
+            super.onInactive();
         }
     }
 
