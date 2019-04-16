@@ -1,12 +1,17 @@
 package com.at.test.activity.life;
 
+import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Index;
+import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.migration.Migration;
+import android.support.annotation.NonNull;
 
 import com.at.test.TestApplication;
 
@@ -60,7 +65,12 @@ public class UserRepository {
     public void loadUsers() {
         AppDatabase db = Room.databaseBuilder(TestApplication.getGlobalApplication(),
                 AppDatabase.class, "and_test").build();
-        List<User> users = db.userDao().getUsers();
+        List<UserTable> users = db.userDao().getUsers();
+    }
+
+    public AppDatabase getAppDatabase() {
+        return Room.databaseBuilder(TestApplication.getGlobalApplication(),
+                AppDatabase.class, "and_test").build();
     }
 
     public static abstract class HttpExecuteCallback<T> {
@@ -78,25 +88,46 @@ public class UserRepository {
         }
     }
 
-    @Entity(tableName = "user")
+    @Entity(tableName = "user", indices = {@Index(name = "user_index", value = {"id"})})
     public static class UserTable {
 
-        @ColumnInfo(name = "id")
+        @ColumnInfo(name = "name")
         String userName;
-        @ColumnInfo(name = "id")
+        @ColumnInfo(name = "pass")
         String userPass;
+
+        @PrimaryKey
+        @NonNull
+        String id;
+
     }
 
     @Dao
     public interface UserDao {
         @Query("select * from user")
-        List<User> getUsers();
+        List<UserTable> getUsers();
+
+        @Query("select * from user where id = :id")
+        UserTable getUserById(String id);
     }
 
-    @Database(entities = {User.class}, version = 1)
-    public abstract class AppDatabase extends RoomDatabase {
+    @Database(entities = {UserTable.class}, version = 1)
+    public static abstract class AppDatabase extends RoomDatabase {
+
         public abstract UserDao userDao();
     }
 
+    public void upgrade() {
+        AppDatabase db = Room.databaseBuilder(TestApplication.getGlobalApplication(),
+                AppDatabase.class, "and_test").addMigrations(migration).build();
+    }
+
+
+    Migration migration = new Migration(1, 2) {
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database) {
+
+        }
+    };
 
 }

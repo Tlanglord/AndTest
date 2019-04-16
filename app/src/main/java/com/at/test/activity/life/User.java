@@ -10,7 +10,6 @@ import android.support.annotation.NonNull;
  */
 public class User {
 
-
     public static class UserLiveData extends LiveData<User> {
 
         public User user;

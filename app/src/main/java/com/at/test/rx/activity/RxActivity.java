@@ -5,9 +5,9 @@ import android.os.Bundle;
 
 public class RxActivity extends Activity {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 //		Observable.just(1, 2, 3, 4).subscribeOn(Schedulers.io())
 //				.observeOn(AndroidSchedulers.mainThread())
 //				.subscribe(new Action1<Integer>() {
@@ -19,5 +19,5 @@ public class RxActivity extends Activity {
 //					}
 //				});
 
-	}
+    }
 }
