@@ -2,27 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.at.test">
 
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
-
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
-    l
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
-
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
 
-    <uses-feature android:glEsVersion="0x00020000" />
-
-    <!--<permission android:name=""/>-->
-
-
+    <uses-feature android:glEsVersion="0x00020000" /> <!-- <permission android:name=""/> -->
     <application
         android:allowBackup="true"
         android:fullBackupContent="true"
@@ -41,70 +32,49 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-
         <activity android:name=".activity.ScrollActivity" />
-
         <activity android:name=".activity.CoordinatorLayoutActivity" />
-
         <activity android:name=".opengl.GLActivity" />
-
         <activity android:name=".activity.ObjectAnimationActivity" />
-
         <activity android:name=".ndk.NdkActivity" />
-
         <activity android:name=".media.audio.AudioActivity" />
-
+        <activity android:name=".media.play.VideoViewActivity" />
         <activity android:name=".media.mreorder.MediaRecorderActivity" />
-
         <activity android:name=".media.mreorder.MediaRecorder2Activity" />
-
         <activity android:name=".media.mreorder.MediaRecorder3Activity" />
-
         <activity android:name=".hw.finger.FingerprintActivity" />
-
         <activity android:name=".app.keyguard.KeyguardActivity" />
-
         <activity android:name=".app.usage.UsagesActivity" />
-
         <activity android:name=".app.wallpaper.WallpaperActivity" />
-
         <activity android:name=".graphics.sample.SampleViewActivity" />
-
         <activity android:name=".transition.TransitionActivity" />
-
         <activity android:name=".transition.Transition2Activity" />
-
         <activity android:name=".aidl.book.BookActivity" />
-
-
         <activity android:name=".opengl.GLJavaActivity" />
-
         <activity android:name=".opensl.OpenSLRecorderActivity" />
-
         <activity android:name=".media.extractor.MediaExtractorActivity" />
-
         <activity android:name=".media.codec.MediaCodecActivity" />
-
         <activity android:name=".media.sync.MediaSyncActivity" />
-
         <activity android:name=".net.socket.local.LocalSocketActivity" />
-
         <activity android:name=".net.socket.web.WebSocketActivity" />
-
         <activity android:name=".media.mreorder.net.MediaRecorderSocketActivity" />
-
         <activity android:name=".media.play.ff.FFmpegActivity" />
+        <activity
+            android:name=".activity.Process2Activity"
+            android:process=":process2" />
+        <activity android:name=".activity.Process2ChildActivity" />
 
         <service
             android:name=".aidl.book.BookService"
             android:exported="false"
             android:permission="permission.books.book.service.p10086"
             android:process=":books" />
-
         <service android:name=".service.guard.MainService" />
-
         <service android:name=".service.guard.GuardService" />
 
+        <activity
+            android:name=".activity.rcy.DouYinListActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

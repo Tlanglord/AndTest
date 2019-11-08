@@ -61,6 +61,10 @@ public class BookManagerService extends IBook.Stub {
         }
     }
 
+    @Override
+    public int testResult(int p) throws RemoteException {
+        return 0;
+    }
 
     //    public void register(OnBookListener onBookListener) {
 //        if (callbackList == null) {

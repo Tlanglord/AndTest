@@ -3,7 +3,9 @@ package com.at.test.utils;
 
 import com.at.test.activity.CoordinatorLayoutActivity;
 import com.at.test.activity.ObjectAnimationActivity;
+import com.at.test.activity.Process2Activity;
 import com.at.test.activity.ScrollActivity;
+import com.at.test.activity.rcy.DouYinListActivity;
 import com.at.test.aidl.book.BookActivity;
 import com.at.test.app.keyguard.KeyguardActivity;
 import com.at.test.app.usage.UsagesActivity;
@@ -17,6 +19,7 @@ import com.at.test.media.mreorder.MediaRecorder2Activity;
 import com.at.test.media.mreorder.MediaRecorder3Activity;
 import com.at.test.media.mreorder.MediaRecorderActivity;
 import com.at.test.media.mreorder.net.MediaRecorderSocketActivity;
+import com.at.test.media.play.VideoViewActivity;
 import com.at.test.media.play.ff.FFmpegActivity;
 import com.at.test.media.sync.MediaSyncActivity;
 import com.at.test.ndk.NdkActivity;
@@ -53,7 +56,10 @@ public enum ClassUtils {
     MediaRecorderSocketActivity(MediaRecorderSocketActivity.class),
     FFmpegActivity(FFmpegActivity.class),
     ScrollActivity(ScrollActivity.class),
-    CoordinatorLayoutActivity(CoordinatorLayoutActivity.class);
+    VideoViewActivity(VideoViewActivity.class),
+    CoordinatorLayoutActivity(CoordinatorLayoutActivity.class),
+    Process2Activity(Process2Activity.class),
+    DouYinListActivity(DouYinListActivity.class);
 
 
 //	//	ScreenSlideActivity(ScreenSlideActivity.class),

@@ -65,6 +65,7 @@ public class BookActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
         if (book != null) {
             try {
 //                Intent intent = new Intent(this, BookService.class);
@@ -75,6 +76,5 @@ public class BookActivity extends Activity {
                 e.printStackTrace();
             }
         }
-
     }
 }

@@ -1,5 +1,10 @@
 package com.at.test.activity.life;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.paging.DataSource;
+import android.arch.paging.ItemKeyedDataSource;
+import android.arch.paging.LivePagedListBuilder;
+import android.arch.paging.PagedList;
 import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Dao;
@@ -109,6 +114,9 @@ public class UserRepository {
 
         @Query("select * from user where id = :id")
         UserTable getUserById(String id);
+
+        @Query("select * from user limit :pageCount offset :page")
+        DataSource.Factory<Integer, UserTable> getUsersPaging(int page, int pageCount);
     }
 
     @Database(entities = {UserTable.class}, version = 1)
@@ -122,12 +130,44 @@ public class UserRepository {
                 AppDatabase.class, "and_test").addMigrations(migration).build();
     }
 
-
     Migration migration = new Migration(1, 2) {
         @Override
         public void migrate(@NonNull SupportSQLiteDatabase database) {
 
         }
     };
+
+    public void paging() {
+
+        DataSource<Integer, UserTable> userTableDataSourceNet = new ItemKeyedDataSource<Integer, UserTable>() {
+
+            @Override
+            public void loadInitial(@NonNull LoadInitialParams<Integer> params, @NonNull LoadInitialCallback<UserTable> callback) {
+
+            }
+
+            @Override
+            public void loadAfter(@NonNull LoadParams<Integer> params, @NonNull LoadCallback<UserTable> callback) {
+
+            }
+
+            @Override
+            public void loadBefore(@NonNull LoadParams<Integer> params, @NonNull LoadCallback<UserTable> callback) {
+//                   params.key
+//
+            }
+
+            @NonNull
+            @Override
+            public Integer getKey(@NonNull UserTable item) {
+                return null;
+            }
+        };
+
+        DataSource.Factory<Integer, UserTable> userTableDataSource = getAppDatabase().userDao().getUsersPaging(0, 20);
+        LiveData<PagedList<UserTable>> pagedList = new LivePagedListBuilder<Integer, UserTable>(userTableDataSource, 20).setBoundaryCallback(new PagedList.BoundaryCallback<UserTable>() {
+        }).build();
+
+    }
 
 }

@@ -1,0 +1,14 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/test_open_process2child"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="open process2 child" />
+
+</RelativeLayout>
